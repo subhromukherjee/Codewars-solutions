@@ -39,34 +39,9 @@ productFib(800) # should return {34, 55, 0},
 productFib(714) # should return {21, 34, true}, 
 productFib(800) # should return {34, 55, false}, 
 """
+
 def productFib(prod):
-    current_value = 0
-    x = 0
-    fib1 =  0
-    fib2 =  1
-
-    while current_value < prod:
-        x += 1
-        fib1 = fib(x)
-        fib2 = fib(x + 1)
-        current_value = fib1 * fib2
-
-    if current_value == prod:
-        return [fib1, fib2, True]
-
-    return [fib1, fib2, False]
-
-
-def fib(n):
-    a = 0
-    b = 1
-    if n < 0:
-        print("Incorrect input")
-    elif n == 0:
-        return a
-    elif n == 1:
-        return b
-    else:
-        for i in range(2,n+1):
-            a,b = b,a+b
-        return b
+  a, b = 0, 1
+  while prod > a * b:
+    a, b = b, a + b
+  return [a, b, prod == a * b]
